@@ -12,7 +12,7 @@ export default [
   eslintPluginPrettier,
   {
     rules: {
-      "capitalized-comments": ["error", "always"],
+      "prettier/prettier": "error",
     },
   },
 ];
