@@ -12,15 +12,8 @@ export default [
   eslintPluginPrettier,
   {
     rules: {
-      "@stylistic/no-multiple-empty-lines": [
-        "error",
-        {
-          max: 2,
-          maxEOF: 1,
-          maxBOF: 0,
-        },
-      ],
       "prettier/prettier": "error",
+      "@typescript-eslint/no-empty-object-type": "off",
     },
   },
 ];
