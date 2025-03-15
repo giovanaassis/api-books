@@ -1,34 +1,33 @@
 import { Request, Response } from "express";
+import { StatusCodes } from "http-status-codes";
 import * as yup from "yup";
+import { validation } from "../../shared/middlewares/validation";
 
 interface ILivro {
   titulo: string;
   genero: string;
 }
 
-const bodyValidation: yup.Schema<ILivro> = yup.object().shape({
-  titulo: yup.string().required().min(2),
-  genero: yup.string().required(),
-});
+interface IFilter {
+  filter?: string;
+}
+
+export const createValidation = validation((getSchema) => ({
+  body: getSchema<ILivro>(
+    yup.object().shape({
+      titulo: yup.string().required().min(2),
+      genero: yup.string().required(),
+    }),
+  ),
+  query: getSchema<IFilter>(
+    yup.object().shape({
+      filter: yup.string().optional().min(3),
+    }),
+  ),
+}));
 
 export const create = async (req: Request<{}, {}, ILivro>, res: Response) => {
-  let validatedData: ILivro | undefined = undefined;
-  try {
-    validatedData = await bodyValidation.validate(req.body, {
-      abortEarly: false,
-    });
-  } catch (err) {
-    const error = err as yup.ValidationError;
-    const errors: Record<string, string> = {};
+  console.log(req.body);
 
-    error.inner.forEach((error) => {
-      if (!error.path) return;
-      errors[error.path] = error.message;
-    });
-
-    res.json({ errors });
-  }
-
-  console.log(validatedData);
-  res.send("Criado!");
+  res.status(StatusCodes.CREATED).send("Criado!");
 };
