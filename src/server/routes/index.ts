@@ -7,6 +7,11 @@ router.get("/", (req, res) => {
   res.status(200).send("Minha API de Livros!");
 });
 
+router.get(
+  "/livros",
+  LivrosController.getAllValidation,
+  LivrosController.getAll,
+);
 router.post(
   "/livros",
   LivrosController.createValidation,
