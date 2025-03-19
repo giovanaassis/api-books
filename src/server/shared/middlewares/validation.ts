@@ -22,7 +22,7 @@ export const validation: TValidation =
 
     Object.entries(schemas).forEach(([key, schema]) => {
       try {
-        schema.validateSync(req[key], { abortEarly: false });
+        schema.validateSync(req[key as TProperty], { abortEarly: false });
       } catch (err) {
         const error = err as ValidationError;
         const errors: Record<string, string> = {};
@@ -32,13 +32,15 @@ export const validation: TValidation =
           errors[error.path] = error.message;
         });
 
-        errorsResult[key] = errors;
+        errorsResult[key as TProperty] = errors;
       }
     });
 
     if (Object.entries(errorsResult).length === 0) {
       return next();
     } else {
-      res.status(StatusCodes.BAD_REQUEST).json(errorsResult);
+      res.status(StatusCodes.BAD_REQUEST).json({
+        errors: errorsResult,
+      });
     }
   };
