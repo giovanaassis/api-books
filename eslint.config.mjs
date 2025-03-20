@@ -14,6 +14,7 @@ export default [
     rules: {
       "prettier/prettier": "error",
       "@typescript-eslint/no-empty-object-type": "off",
+      "@typescript-eslint/no-unsafe-function-type": "off",
     },
   },
 ];
