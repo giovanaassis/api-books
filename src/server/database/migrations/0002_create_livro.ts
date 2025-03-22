@@ -5,22 +5,10 @@ export async function up(knex: Knex) {
   return knex.schema
     .createTable(ETableNames.livro, (table) => {
       table.bigIncrements("id").primary().index();
-      table.string("titulo", 150).notNullable();
+      table.string("titulo", 150).checkLength("<=", 150).notNullable();
       table.text("descricao");
-      table
-        .integer("genero_id")
-        .index()
-        .notNullable()
-        .unsigned()
-        .references("id")
-        .inTable(ETableNames.genero);
-      table
-        .integer("autor_id")
-        .index()
-        .notNullable()
-        .unsigned()
-        .references("id")
-        .inTable(ETableNames.autor);
+      table.integer("genero_id").index().notNullable();
+      table.integer("autor_id").index().notNullable();
     })
     .then(() => console.log(`# Created table ${ETableNames.livro} `));
 }
