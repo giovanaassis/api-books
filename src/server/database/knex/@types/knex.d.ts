@@ -1,6 +1,6 @@
 declare module "knex/types/tables" {
   interface Tables {
-    // ILivro
+    ILivro;
     // IGenero
     // IAutor
   }
