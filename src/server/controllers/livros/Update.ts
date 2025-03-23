@@ -30,19 +30,19 @@ export const updateValidation = validation((getSchema) => ({
 export const update = async (
   req: Request<IParamsProps, {}, IBodyProps>,
   res: Response,
-) => {
+): Promise<void> => {
   if (!req.params.id) {
-    return res.status(StatusCodes.BAD_REQUEST).json({
+    res.status(StatusCodes.BAD_REQUEST).json({
       errors: {
         default: "O parâmetro 'id' precisa ser informado.",
       },
     });
   }
 
-  const result = await LivrosProvider.update(req.body, req.params.id);
+  const result = await LivrosProvider.update(req.body, Number(req.params.id));
 
   if (result instanceof Error) {
-    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
       errors: {
         default: result.message,
       },

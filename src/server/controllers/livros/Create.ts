@@ -18,11 +18,14 @@ export const createValidation = validation((getSchema) => ({
   ),
 }));
 
-export const create = async (req: Request<{}, {}, ILivro>, res: Response) => {
+export const create = async (
+  req: Request<{}, {}, ILivro>,
+  res: Response,
+): Promise<void> => {
   const result = await LivrosProvider.create(req.body);
 
   if (result instanceof Error) {
-    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
       errors: {
         default: result.message,
       },

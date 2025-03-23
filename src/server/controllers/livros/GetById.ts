@@ -16,19 +16,22 @@ export const getByIdValidation = validation((getSchema) => ({
   ),
 }));
 
-export const getById = async (req: Request<IParamsProps>, res: Response) => {
+export const getById = async (
+  req: Request<IParamsProps>,
+  res: Response,
+): Promise<void> => {
   if (!req.params.id) {
-    return res.status(StatusCodes.BAD_REQUEST).json({
+    res.status(StatusCodes.BAD_REQUEST).json({
       errors: {
         default: "O parâmetro 'id' precisa ser informado.",
       },
     });
   }
 
-  const result = await LivrosProvider.getById(req.params.id);
+  const result = await LivrosProvider.getById(Number(req.params.id));
 
   if (result instanceof Error) {
-    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
       errors: {
         default: result.message,
       },
