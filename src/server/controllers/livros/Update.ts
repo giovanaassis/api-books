@@ -3,6 +3,7 @@ import { validation } from "../../shared/middlewares/validation";
 import * as yup from "yup";
 import { StatusCodes } from "http-status-codes";
 import { ILivro } from "../../database/models";
+import { LivrosProvider } from "../../database/providers/livros";
 
 interface IBodyProps extends Omit<ILivro, "id"> {}
 
@@ -26,12 +27,19 @@ export const updateValidation = validation((getSchema) => ({
   ),
 }));
 
-export const update = (
+export const update = async (
   req: Request<IParamsProps, {}, IBodyProps>,
   res: Response,
 ) => {
-  console.log(req.body.titulo);
-  console.log(req.params);
+  const result = await LivrosProvider.update(req.body, Number(req.params.id));
 
-  res.status(StatusCodes.INTERNAL_SERVER_ERROR).send("Não Implementado");
+  if (result instanceof Error) {
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      errors: {
+        default: result.message,
+      },
+    });
+  }
+
+  res.status(StatusCodes.OK).json(result);
 };
