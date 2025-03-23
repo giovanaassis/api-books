@@ -17,7 +17,15 @@ export const deleteByIdValidation = validation((getSchema) => ({
 }));
 
 export const deleteById = async (req: Request<IParamsProps>, res: Response) => {
-  const result = await LivrosProvider.deleteById(Number(req.params.id));
+  if (!req.params.id) {
+    return res.status(StatusCodes.BAD_REQUEST).json({
+      errors: {
+        default: "O parâmetro 'id' precisa ser informado.",
+      },
+    });
+  }
+
+  const result = await LivrosProvider.deleteById(req.params.id);
 
   if (result instanceof Error) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
@@ -27,5 +35,5 @@ export const deleteById = async (req: Request<IParamsProps>, res: Response) => {
     });
   }
 
-  res.status(StatusCodes.OK).json(result);
+  res.status(StatusCodes.NO_CONTENT).send();
 };
