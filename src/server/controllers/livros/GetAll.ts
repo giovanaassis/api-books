@@ -8,7 +8,9 @@ interface IQueryProps {
   id?: number;
   page?: number;
   limit?: number;
-  filter?: string; // acrescentar query para genero e autor
+  filter?: string;
+  genre?: number;
+  author?: number;
 }
 
 export const getAllValidation = validation((getSchema) => ({
@@ -18,6 +20,8 @@ export const getAllValidation = validation((getSchema) => ({
       page: yup.number().optional().integer().moreThan(0),
       limit: yup.number().optional().integer().moreThan(0),
       filter: yup.string().optional(),
+      genre: yup.number().optional().integer(),
+      author: yup.number().optional().integer(),
     }),
   ),
 }));
@@ -30,6 +34,8 @@ export const getAll = async (
     req.query.page || 1,
     req.query.limit || 10,
     req.query.filter || "",
+    Number(req.query.genre),
+    Number(req.query.author),
     Number(req.query.id),
   );
   const count = await LivrosProvider.count(req.query.filter);
