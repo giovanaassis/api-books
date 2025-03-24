@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { GenerosController, LivrosController } from "../controllers";
+import { AutoresController } from "../controllers/autores";
 
 const router = Router();
 
@@ -44,6 +45,23 @@ router.get(
   "/genero/:id",
   GenerosController.getByIdValidation,
   GenerosController.getById,
+);
+
+//rotas para autores de livros
+router.get(
+  "/autor",
+  AutoresController.getAllValidation,
+  AutoresController.getAll,
+);
+router.get(
+  "/autor/:id",
+  AutoresController.getByIdValidation,
+  AutoresController.getById,
+);
+router.post(
+  "/autor",
+  AutoresController.createValidation,
+  AutoresController.create,
 );
 
 export default router;
