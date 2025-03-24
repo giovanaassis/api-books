@@ -8,5 +8,7 @@ export const seed = async (knex: Knex) => {
   );
   if (!Number.isInteger(count) || Number(count) > 0) return;
 
-  await knex(ETableNames.genero).insert(generosToInsert);
+  await knex(ETableNames.genero).insert(
+    generosToInsert.map((genero) => ({ nome: genero })),
+  );
 };

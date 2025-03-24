@@ -7,8 +7,24 @@ export async function up(knex: Knex) {
       table.bigIncrements("id").primary().index();
       table.string("titulo", 150).checkLength("<=", 150).notNullable();
       table.text("descricao");
-      table.integer("genero_id").index().notNullable();
-      table.integer("autor_id").index().notNullable();
+      table
+        .integer("genero_id")
+        .index()
+        .notNullable()
+        .unsigned()
+        .references("id")
+        .inTable(ETableNames.genero)
+        .onUpdate("CASCADE")
+        .onDelete("RESTRICT");
+      table
+        .integer("autor_id")
+        .index()
+        .notNullable()
+        .unsigned()
+        .references("id")
+        .inTable(ETableNames.autor)
+        .onUpdate("CASCADE")
+        .onDelete("RESTRICT");
     })
     .then(() => console.log(`# Created table ${ETableNames.livro} `));
 }

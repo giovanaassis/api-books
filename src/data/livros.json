@@ -24,39 +24,99 @@
     "autor_id": 4
   },
   {
-    "titulo": "Anna e o Beijo Francês",
-    "descricao": "Uma jovem americana se muda para Paris e descobre o amor e a amizade.",
+    "titulo": "O Diário de uma Paixão",
+    "descricao": "Um idoso lê para sua esposa, com Alzheimer, a história do romance deles quando eram jovens.",
     "genero_id": 1,
     "autor_id": 5
   },
   {
-    "titulo": "O Morro dos Ventos Uivantes",
-    "descricao": "Uma intensa história de amor e vingança entre Catherine e Heathcliff.",
-    "genero_id": 1,
+    "titulo": "Duna",
+    "descricao": "No deserto de Arrakis, Paul Atreides enfrenta intrigas políticas e descobre seu destino como líder.",
+    "genero_id": 2,
     "autor_id": 6
   },
   {
-    "titulo": "Para Todos os Garotos que Já Amei",
-    "descricao": "Uma adolescente tem suas cartas secretas de amor enviadas aos garotos por quem já teve uma queda.",
-    "genero_id": 1,
+    "titulo": "Fundação",
+    "descricao": "Um matemático prevê a queda do império galáctico e cria um plano para salvar o conhecimento humano.",
+    "genero_id": 2,
     "autor_id": 7
   },
   {
-    "titulo": "Um Dia",
-    "descricao": "A história de Dexter e Emma, contada ao longo de 20 anos, revisitando suas vidas no mesmo dia de cada ano.",
-    "genero_id": 1,
+    "titulo": "Neuromancer",
+    "descricao": "Um hacker falido recebe uma chance de voltar ao jogo em um mundo dominado por inteligência artificial.",
+    "genero_id": 2,
     "autor_id": 8
   },
   {
-    "titulo": "O Diário de uma Paixão",
-    "descricao": "Um idoso lê para sua esposa, com Alzheimer, a história do romance deles quando eram jovens.",
-    "genero_id": 1,
+    "titulo": "1984",
+    "descricao": "Em um futuro distópico, um homem desafia um governo totalitário que controla a mente das pessoas.",
+    "genero_id": 2,
     "autor_id": 9
   },
   {
-    "titulo": "Eleanor & Park",
-    "descricao": null,
-    "genero_id": 1,
+    "titulo": "Admirável Mundo Novo",
+    "descricao": "Uma sociedade futurista mantém a ordem através de controle genético e manipulação da felicidade.",
+    "genero_id": 2,
     "autor_id": 10
+  },
+  {
+    "titulo": "O Nome do Vento",
+    "descricao": "A jornada de Kvothe, um jovem prodígio da magia, em busca de conhecimento e vingança.",
+    "genero_id": 3,
+    "autor_id": 11
+  },
+  {
+    "titulo": "O Hobbit",
+    "descricao": "A aventura de Bilbo Bolseiro, um hobbit que embarca em uma jornada inesperada para ajudar um grupo de anões a recuperar seu reino tomado pelo dragão Smaug.",
+    "genero_id": 3,
+    "autor_id": 12
+  },
+  {
+    "titulo": "O Senhor dos Anéis",
+    "descricao": "Uma épica jornada pelo mundo da Terra-média, onde Frodo Bolseiro e seus companheiros devem destruir o Um Anel antes que ele caia nas mãos do maligno Sauron.",
+    "genero_id": 3,
+    "autor_id": 12
+  },
+  {
+    "titulo": "Eragon",
+    "descricao": "Um jovem encontra um ovo de dragão e descobre que está destinado a lutar contra um império tirano.",
+    "genero_id": 3,
+    "autor_id": 13
+  },
+  {
+    "titulo": "O Leão, a Feiticeira e o Guarda-Roupa",
+    "descricao": "Quatro irmãos descobrem um mundo mágico e se juntam a um leão para derrotar uma feiticeira.",
+    "genero_id": 3,
+    "autor_id": 14
+  },
+  {
+    "titulo": "O Iluminado",
+    "descricao": "Um hotel assombrado leva um homem à loucura, colocando sua família em perigo.",
+    "genero_id": 4,
+    "autor_id": 15
+  },
+  {
+    "titulo": "O Chamado de Cthulhu",
+    "descricao": "Uma entidade cósmica dorme nas profundezas do oceano, aguardando seu despertar.",
+    "genero_id": 4,
+    "autor_id": 16
+  },
+  {
+    "titulo": "Nas Montanhas da Loucura",
+    "descricao": "Exploradores na Antártica descobrem ruínas antigas e horrores indescritíveis.",
+    "genero_id": 4,
+    "autor_id": 16
+  },
+  {
+    "titulo": "Steve Jobs",
+    "descricao": "A vida do visionário da Apple, com altos e baixos de sua carreira.",
+    "genero_id": 5,
+    "autor_id": 17
+  },
+  {
+    "titulo": "Longa Caminhada até a Liberdade",
+    "descricao": "A trajetória de Mandela da prisão à presidência da África do Sul.",
+    "genero_id": 5,
+    "autor_id": 18
   }
 ]

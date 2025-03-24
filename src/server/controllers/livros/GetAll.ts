@@ -8,7 +8,7 @@ interface IQueryProps {
   id?: number;
   page?: number;
   limit?: number;
-  filter?: string;
+  filter?: string; // acrescentar query para genero e autor
 }
 
 export const getAllValidation = validation((getSchema) => ({
