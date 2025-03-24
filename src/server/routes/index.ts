@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { LivrosController } from "../controllers/livros";
+import { GenerosController, LivrosController } from "../controllers";
 
 const router = Router();
 
@@ -32,6 +32,18 @@ router.delete(
   "/livros/:id",
   LivrosController.deleteByIdValidation,
   LivrosController.deleteById,
+);
+
+// rotas para generos de livros
+router.get(
+  "/genero",
+  GenerosController.getAllValidation,
+  GenerosController.getAll,
+);
+router.get(
+  "/genero/:id",
+  GenerosController.getByIdValidation,
+  GenerosController.getById,
 );
 
 export default router;

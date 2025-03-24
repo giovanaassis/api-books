@@ -5,7 +5,7 @@ export async function up(knex: Knex) {
   return knex.schema
     .createTable(ETableNames.autor, (table) => {
       table.increments("id").primary().index();
-      table.string("nome", 100).notNullable().unique();
+      table.string("nome", 100).checkLength("<=", 100).notNullable().unique();
     })
     .then(() => console.log(`# Created table ${ETableNames.autor}`));
 }
