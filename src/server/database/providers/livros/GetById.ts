@@ -9,9 +9,11 @@ export const getById = async (id: number): Promise<ILivro | Error> => {
       .where("id", "=", id)
       .first();
 
-    if (result) return result;
-
-    return new Error("Erro ao consultar um registro.");
+    if (!result) {
+      return new Error("Registro não encontrado.");
+    } else {
+      return result;
+    }
   } catch (error) {
     console.log(error);
     return new Error("Erro ao consultar um registro.");
