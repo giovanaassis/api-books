@@ -24,4 +24,11 @@ describe("Autores - Get By Id", () => {
     expect(result.status).toBe(StatusCodes.BAD_REQUEST);
     expect(result.body).toHaveProperty("errors");
   });
+
+  it("should try get a author that doesn't exist", async () => {
+    const result = await testServer.get("/autor/9999");
+
+    expect(result.status).toBe(StatusCodes.INTERNAL_SERVER_ERROR);
+    expect(result.body).toHaveProperty("errors");
+  });
 });

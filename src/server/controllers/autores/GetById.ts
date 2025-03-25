@@ -25,7 +25,9 @@ export const getById = async (req: Request<IParamsProps>, res: Response) => {
         default: result.message,
       },
     });
+    return;
   }
 
   res.status(StatusCodes.OK).json(result);
+  return;
 };

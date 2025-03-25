@@ -43,4 +43,11 @@ describe("Livros - Update", () => {
 
     expect(result.status).toBe(StatusCodes.NOT_FOUND);
   });
+
+  it("should try update a book that doesn't exist", async () => {
+    const result = await testServer.get("/livros/9999");
+
+    expect(result.status).toBe(StatusCodes.INTERNAL_SERVER_ERROR);
+    expect(result.body).toHaveProperty("errors");
+  });
 });

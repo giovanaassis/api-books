@@ -36,7 +36,9 @@ export const getById = async (
         default: result.message,
       },
     });
+    return;
   }
 
-  res.status(StatusCodes.OK).send(result);
+  res.status(StatusCodes.OK).json(result);
+  return;
 };

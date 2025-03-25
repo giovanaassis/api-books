@@ -24,4 +24,11 @@ describe("Livros - Get By Id", () => {
     expect(result.status).toBe(StatusCodes.BAD_REQUEST);
     expect(result.body).toHaveProperty("errors");
   });
+
+  it("should try get a book that doesn't exist", async () => {
+    const result = await testServer.get("/livros/9999");
+
+    expect(result.status).toBe(StatusCodes.INTERNAL_SERVER_ERROR);
+    expect(result.body).toHaveProperty("errors");
+  });
 });
