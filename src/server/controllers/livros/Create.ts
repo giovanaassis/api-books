@@ -13,15 +13,12 @@ export const createValidation = validation((getSchema) => ({
       titulo: yup.string().required().min(2),
       descricao: yup.string().optional(),
       genero_id: yup.number().required().moreThan(0),
-      autor_id: yup.number().required(),
+      autor_id: yup.number().required().moreThan(0),
     }),
   ),
 }));
 
-export const create = async (
-  req: Request<{}, {}, ILivro>,
-  res: Response,
-): Promise<void> => {
+export const create = async (req: Request<{}, {}, ILivro>, res: Response) => {
   const result = await LivrosProvider.create(req.body);
 
   if (result instanceof Error) {
@@ -30,7 +27,9 @@ export const create = async (
         default: result.message,
       },
     });
+    return;
   }
 
   res.status(StatusCodes.CREATED).json(result);
+  return;
 };

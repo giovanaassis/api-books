@@ -27,7 +27,9 @@ export const create = async (
         default: result.message,
       },
     });
+    return;
   }
 
   res.status(StatusCodes.CREATED).json(result);
+  return;
 };
