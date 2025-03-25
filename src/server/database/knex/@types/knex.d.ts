@@ -1,7 +1,10 @@
+import { IAutor, IGenero, ILivro, IUsuario } from "../../models";
+
 declare module "knex/types/tables" {
   interface Tables {
-    ILivro;
-    IGenero;
-    IAutor;
+    livro: ILivro;
+    genero: IGenero;
+    autor: IAutor;
+    usuario: IUsuario;
   }
 }
