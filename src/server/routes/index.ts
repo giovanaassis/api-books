@@ -1,6 +1,10 @@
 import { Router } from "express";
-import { GenerosController, LivrosController } from "../controllers";
-import { AutoresController } from "../controllers/autores";
+import {
+  GenerosController,
+  LivrosController,
+  AutoresController,
+  UsuariosController,
+} from "../controllers";
 
 const router = Router();
 
@@ -62,6 +66,18 @@ router.post(
   "/autor",
   AutoresController.createValidation,
   AutoresController.create,
+);
+
+// rotas para o login
+router.post(
+  "/cadastrar",
+  UsuariosController.signUpValidation,
+  UsuariosController.signUp,
+);
+router.post(
+  "/entrar",
+  UsuariosController.signInValidation,
+  UsuariosController.signIn,
 );
 
 export default router;
