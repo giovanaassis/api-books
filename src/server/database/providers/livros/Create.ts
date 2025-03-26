@@ -13,9 +13,7 @@ export const create = async (
       .andWhere("autor_id", livro.autor_id)
       .first();
 
-    if (existedResult) {
-      return new Error("Já existe esse registro.");
-    } else {
+    if (!existedResult) {
       const [result] = await Knex(ETableNames.livro)
         .insert(livro)
         .returning("id");
@@ -27,7 +25,7 @@ export const create = async (
       }
     }
 
-    return new Error("Erro ao cadastrar um registro");
+    return new Error("Já existe esse registro");
   } catch (error) {
     console.log(error);
     return new Error("Erro ao cadastrar um registro.");
