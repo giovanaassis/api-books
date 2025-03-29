@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { validation } from "../../shared/middlewares/validation";
+import { validation } from "../../shared/middlewares/Validation";
 import * as yup from "yup";
 import { GenerosProvider } from "../../database/providers/generos";
 import { StatusCodes } from "http-status-codes";

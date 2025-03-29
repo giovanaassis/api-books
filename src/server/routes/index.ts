@@ -5,6 +5,7 @@ import {
   AutoresController,
   UsuariosController,
 } from "../controllers";
+import { ensureAuthenticated } from "../shared/middlewares/ensureAuthenticated";
 
 const router = Router();
 
@@ -15,26 +16,31 @@ router.get("/", (req, res) => {
 // rotas para livros
 router.get(
   "/livros",
+  ensureAuthenticated,
   LivrosController.getAllValidation,
   LivrosController.getAll,
 );
 router.get(
   "/livros/:id",
+  ensureAuthenticated,
   LivrosController.getByIdValidation,
   LivrosController.getById,
 );
 router.post(
   "/livros",
+  ensureAuthenticated,
   LivrosController.createValidation,
   LivrosController.create,
 );
 router.put(
   "/livros/:id",
+  ensureAuthenticated,
   LivrosController.updateValidation,
   LivrosController.update,
 );
 router.delete(
   "/livros/:id",
+  ensureAuthenticated,
   LivrosController.deleteByIdValidation,
   LivrosController.deleteById,
 );
@@ -42,11 +48,13 @@ router.delete(
 // rotas para generos de livros
 router.get(
   "/genero",
+  ensureAuthenticated,
   GenerosController.getAllValidation,
   GenerosController.getAll,
 );
 router.get(
   "/genero/:id",
+  ensureAuthenticated,
   GenerosController.getByIdValidation,
   GenerosController.getById,
 );
@@ -54,16 +62,19 @@ router.get(
 //rotas para autores de livros
 router.get(
   "/autor",
+  ensureAuthenticated,
   AutoresController.getAllValidation,
   AutoresController.getAll,
 );
 router.get(
   "/autor/:id",
+  ensureAuthenticated,
   AutoresController.getByIdValidation,
   AutoresController.getById,
 );
 router.post(
   "/autor",
+  ensureAuthenticated,
   AutoresController.createValidation,
   AutoresController.create,
 );

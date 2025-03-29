@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 import { UsuariosProvider } from "../../database/providers/usuarios";
 import { IUsuario } from "../../database/models";
-import { validation } from "../../shared/middlewares/validation";
+import { validation } from "../../shared/middlewares/Validation";
 import * as yup from "yup";
 import { StatusCodes } from "http-status-codes";
-import { PasswordCrypto } from "../../shared/services";
+import { JWTService, PasswordCrypto } from "../../shared/services";
 
 interface IBodyProps extends Omit<IUsuario, "id" | "nome"> {}
 
@@ -41,7 +41,16 @@ export const signIn = async (
     });
     return;
   } else {
-    res.status(StatusCodes.OK).json({ acessToken: "teste.teste.teste" });
+    const acessToken = JWTService.sign({ uid: result.id });
+
+    if (acessToken === "JWT_SECRET_NOT_FOUND") {
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+        errors: { default: "Erro ao gerar o token de acesso." },
+      });
+      return;
+    }
+
+    res.status(StatusCodes.OK).json({ acessToken });
     return;
   }
 };
