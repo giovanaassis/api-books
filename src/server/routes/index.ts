@@ -5,7 +5,7 @@ import {
   AutoresController,
   UsuariosController,
 } from "../controllers";
-import { ensureAuthenticated } from "../shared/middlewares/ensureAuthenticated";
+import { ensureAuthenticated } from "../shared/middlewares/EnsureAuthenticated";
 
 const router = Router();
 

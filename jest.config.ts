@@ -8,6 +8,7 @@ const config: JestConfigWithTsJest = {
   moduleFileExtensions: ["ts", "js"],
   testMatch: ["<rootDir>/src/tests/**/*.test.ts"],
   coveragePathIgnorePatterns: ["/node_modules/", "/dist/"],
+  setupFilesAfterEnv: ["dotenv/config"],
 };
 
 export default config;
