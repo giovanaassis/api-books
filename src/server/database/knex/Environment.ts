@@ -35,5 +35,14 @@ export const test: Knex.Config = {
 };
 
 export const production: Knex.Config = {
-  ...development,
+  client: "pg",
+  connection: {
+    connectionString: process.env.DATABASE_CONNECTION_STRING,
+  },
+  migrations: {
+    directory: path.resolve(__dirname, "..", "migrations"),
+  },
+  seeds: {
+    directory: path.resolve(__dirname, "..", "seeds"),
+  },
 };
