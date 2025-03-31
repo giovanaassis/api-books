@@ -4,7 +4,7 @@ import { AutoresProvider } from "../../database/providers/autores";
 import { StatusCodes } from "http-status-codes";
 
 import * as yup from "yup";
-import { validation } from "@middlewares/Validation";
+import { validation } from "../../shared/middlewares/Validation";
 
 interface IBodyProps extends Omit<IAutor, "id"> {}
 
