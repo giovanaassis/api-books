@@ -7,6 +7,7 @@
     "dev": "npx kill-port 5050 && tsx watch ./src/index.ts",
     "test": "jest --passWithNoTests",
     "build": "tsc",
+    "postinstall": "npm run build",
     "knex:migrate": "knex --knexfile ./src/server/database/knex/Environment.ts migrate:latest",
     "knex:rollback": "knex --knexfile ./src/server/database/knex/Environment.ts migrate:rollback",
     "knex:rollback-all": "knex --knexfile ./src/server/database/knex/Environment.ts migrate:rollback --all",
