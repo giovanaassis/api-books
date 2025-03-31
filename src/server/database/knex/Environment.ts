@@ -1,6 +1,6 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Knex } from "knex";
 import path from "path";
+import "dotenv/config";
 
 export const development: Knex.Config = {
   client: "sqlite3",
@@ -38,6 +38,7 @@ export const production: Knex.Config = {
   client: "pg",
   connection: {
     connectionString: process.env.DATABASE_CONNECTION_STRING,
+    ssl: { rejectUnauthorized: false },
   },
   migrations: {
     directory: path.resolve(__dirname, "..", "migrations"),
