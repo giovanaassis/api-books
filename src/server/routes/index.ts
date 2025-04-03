@@ -6,11 +6,19 @@ import {
   UsuariosController,
 } from "../controllers";
 import { ensureAuthenticated } from "../shared/middlewares/EnsureAuthenticated";
+import { ETableNames } from "server/database/ETableNames";
+import { Knex } from "server/database/knex";
 
 const router = Router();
 
 router.get("/", (req, res) => {
   res.status(200).send("Minha API de Livros!");
+});
+
+router.get("/api", async (req, res) => {
+  const result = await Knex(ETableNames.livro).select("*").limit(10);
+
+  res.status(200).json(result);
 });
 
 // rotas para livros
