@@ -6,8 +6,9 @@ import {
   UsuariosController,
 } from "../controllers";
 import { ensureAuthenticated } from "../shared/middlewares/EnsureAuthenticated";
-import { ETableNames } from "server/database/ETableNames";
+
 import { Knex } from "server/database/knex";
+import { ETableNames } from "../database/ETableNames";
 
 const router = Router();
 
