@@ -8,7 +8,6 @@ import {
 import { ensureAuthenticated } from "../shared/middlewares/EnsureAuthenticated";
 
 import { Knex } from "../database/knex/index";
-import { ETableNames } from "../database/ETableNames";
 
 const router = Router();
 
@@ -17,7 +16,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/api", async (req, res) => {
-  const result = await Knex(ETableNames.livro).select("*").limit(10);
+  const result = await Knex("teste").select("*").limit(10);
 
   res.status(200).json(result);
 });
