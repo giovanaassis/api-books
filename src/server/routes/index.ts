@@ -7,7 +7,7 @@ import {
 } from "../controllers";
 import { ensureAuthenticated } from "../shared/middlewares/EnsureAuthenticated";
 
-import { Knex } from "server/database/knex";
+import { Knex } from "../database/knex/index";
 import { ETableNames } from "../database/ETableNames";
 
 const router = Router();
