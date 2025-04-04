@@ -2,7 +2,7 @@ import { Knex } from "knex";
 import path from "path";
 import "dotenv/config";
 
-export const development: Knex.Config = {
+const development: Knex.Config = {
   client: "sqlite3",
   useNullAsDefault: true,
   connection: {
@@ -29,12 +29,12 @@ export const development: Knex.Config = {
   },
 };
 
-export const test: Knex.Config = {
+const test: Knex.Config = {
   ...development,
   connection: ":memory:",
 };
 
-export const production: Knex.Config = {
+const production: Knex.Config = {
   client: "pg",
   connection: {
     connectionString: process.env.DATABASE_CONNECTION_STRING,
@@ -46,4 +46,10 @@ export const production: Knex.Config = {
   seeds: {
     directory: path.resolve(__dirname, "..", "seeds"),
   },
+};
+
+export default {
+  development,
+  test,
+  production,
 };
