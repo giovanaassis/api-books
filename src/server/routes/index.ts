@@ -7,18 +7,10 @@ import {
 } from "../controllers";
 import { ensureAuthenticated } from "../shared/middlewares/EnsureAuthenticated";
 
-import { Knex } from "../database/knex/index";
-
 const router = Router();
 
 router.get("/", (req, res) => {
   res.status(200).send("Minha API de Livros!");
-});
-
-router.get("/api", async (req, res) => {
-  const result = await Knex("teste").select("*").limit(10);
-
-  res.status(200).json(result);
 });
 
 // rotas para livros
